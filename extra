@@ -1,0 +1,64 @@
+#FCFCC7
+
+px-[clamp(1rem,1vw,1.5rem)] py-[clamp(0.2rem,0.5vw,1.5rem)]
+paragraph paddings
+
+pt-[clamp(0.2rem,_0.5vw,_10rem)]
+
+<!-- OUR STORY SECTION -->
+<section>
+    <!-- Container: Always at least 320px wide, but once on larger screens, max out at md (e.g., 448px) and center -->
+    <div class="w-full mx-auto sm:max-w-[80%] xl:max-w-[70%]">
+        <!-- About Us Header -->
+        <h1 class="m-2 font-bold text-black text-[2.5rem] text-center">Our Story</h1>
+        <!-- Masjid Photo -->
+        <img id="myImage" src="images/1995-masjid.jpg" alt="Masjid Photo"
+            class="mx-auto w-full shadow sm:mb-4 lg:mb-8 2xl:mb-12" />
+
+        <!-- Year Buttons -->
+        <!-- 2x2 Grid for Year Buttons -->
+        <div
+            class="px-4 py-4 grid grid-cols-2 gap-[clamp(0.5rem,_5vw,_15rem)] sm:px-0 sm:py-0 sm:flex sm:justify-between">
+            <button onclick="changeImage('1995', event)"
+                class="flex-1  bg-[#006838] selected-year px-[clamp(0.5rem,_3vw,_10rem)] py-[clamp(0.25rem,_1.5vw,_10rem)] text-[clamp(1rem,_3vw,_10rem)] text-white font-semibold rounded border-2 border-black hover:bg-[#51D034] transition shadow-xl">
+                1995
+            </button>
+            <button onclick="changeImage('2005', event)"
+                class="flex-1 px-[clamp(0.5rem,_3vw,_10rem)] py-[clamp(0.25rem,_1.5vw,_10rem)] text-[clamp(1rem,_3vw,_10rem)] bg-white text-black rounded border-2 font-semibold border-black hover:bg-[#51D034] transition shadow-xl">
+                2005
+            </button>
+            <button onclick="changeImage('2015', event)"
+                class="flex-1 px-[clamp(0.5rem,_3vw,_10rem)] py-[clamp(0.25rem,_1.5vw,_10rem)] text-[clamp(1rem,_3vw,_10rem)] bg-white text-black rounded border-2 font-semibold border-black hover:bg-[#51D034] transition shadow-xl">
+                2015
+            </button>
+            <button onclick="changeImage('2025', event)"
+                class="flex-1 px-[clamp(0.5rem,_3vw,_10rem)] py-[clamp(0.25rem,_1.5vw,_10rem)] text-[clamp(1rem,_3vw,_10rem)] bg-white text-black rounded border-2 font-semibold border-black hover:bg-[#51D034] transition shadow-xl">
+                2025
+            </button>
+        </div>
+        <!-- Yearly Description -->
+        <div class="sm:mt-4">
+            <div id="year-description"
+                class="text-left text-sm sm:text-base text-black leading-relaxed md:text-justify">
+                <p
+                    class="block px-[clamp(1rem,1vw,1.5rem)] sm:px-0 py-[clamp(0.5rem,0.75vw,1.5rem)] text-left leading-relaxed text-black text-[1rem] sm:px-0 sm:text-[1.5rem]">
+                    By 1995, the Muslim community had successfully acquired a small house, which was rezoned for
+                    use
+                    as
+                    a Masjid.
+                    Though modest in size, this space became the heart of the growing Muslim population in the
+                    area.
+                    It
+                    served as
+                    a place for daily prayers, Jumu'ah congregations, and small gatherings. Fundraising efforts
+                    began in
+                    earnest
+                    to expand the Masjid and provide better facilities for worshippers.
+                </p>
+            </div>
+        </div>
+
+
+
+    </div>
+</section>

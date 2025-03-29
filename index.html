@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Centered Mobile Header</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body class="mx-auto bg-[#51D034] max-w-[1600px] px-4">
+
+    <!-- HEADER -->
+    <header class="lg:-mx-4">
+        <!-- Top Portion of Header for Desktop+  -->
+        <div class="hidden lg:flex w-full items-center pt-4 px-4 bg-gray-100">
+            <!-- Left Column: Prayer Button -->
+            <div class="flex flex-1 gap-[1vh]">
+                <button aria-label="View prayer times" class="flex bg-[#006838] items-center justify-center gap-2 px-3 py-2 
+                    text-xs pt-3 2xl:text-base leading-none text-white font-semibold 
+                    rounded-full shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                    <img src="images/prayer-icon.svg" alt="Prayer Times Icon"
+                        class="h-[1.5rem] w-[1.5rem] leading-none">
+                    Prayer Times
+                </button>
+                <!-- Donate Button -->
+
+                <button aria-label="Donate to support" class="flex bg-[#006838] items-center justify-center gap-2 px-3 py-2
+                text-xs pt-3 2xl:text-base leading-none text-white font-semibold 
+                rounded-full shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                    <img src="images/donate-icon.svg" alt="Prayer Times Icon" class="h-[1.5rem] w-[1.5rem]">
+                    Donate
+                </button>
+            </div>
+
+            <!-- Centered Logo -->
+            <img src="images/masjid-logo.svg" alt="Bilal Masjid Logo"
+                class="h-[70px] w-auto xl:h-[80px] 2xl:h-[90px]" />
+
+            <!-- Right Column: Donate + Search -->
+            <div class="flex-1 flex justify-end items-center relative">
+                <!-- Search Bar -->
+                <div class="relative w-[clamp(10rem,15vw,13rem)]">
+                    <input type="text" id="header-search" name="search" aria-label="Search" placeholder="Search..."
+                        class="w-full px-3 py-2 pr-10 rounded-full bg-white text-black placeholder:text-sm placeholder-gray-500 border-2 border-[#006838] focus:outline-none focus:ring-2 focus:ring-[#009950]">
+                    <img src="images/mag-icon.svg" alt="Search Icon"
+                        class="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 md:w-6 md:h-6">
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Mobile/Tablet Navbar -->
+        <div class="block lg:hidden bg-gray-100 px-4 py-2 flex items-center justify-between">
+            <!-- Logo on the Left -->
+            <div class="flex items-center">
+                <img src="images/masjid-logo.svg" alt="Bilal Masjid Logo"
+                    class="h-[clamp(3rem,12vw,4rem)] w-auto transition-transform duration-300 ease-in-out" />
+            </div>
+
+            <!-- Hamburger Icon on the Right -->
+            <div id="menu-toggle" class="flex items-center" aria-haspopup="true" aria-expanded="false">
+                <!-- Hamburger Icon -->
+                <img src="images/hamburger-icon.svg" alt="Open Menu" id="hamburger-icon"
+                    class="h-[15px] w-[20px] sm:h-[22.5px] w-[30px] transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer"
+                    aria-label="Open Menu" role="button" tabindex="0" />
+
+                <!-- X Icon (Initially Hidden) -->
+                <img id="close-icon" src="images/close-button.svg" alt="Close Menu"
+                    class="hidden h-[15px] w-[20px] sm:h-[22.5px] w-[30px] transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer"
+                    aria-label="Close Menu" role="button" tabindex="0" />
+            </div>
+        </div>
+
+        <!-- Tablet+ Navbar -->
+        <nav class="hidden w-full lg:flex justify-center mb-4 space-x-4 md:space-x-6 lg:space-x-10 xl:space-x-12 2xl:space-x-14 items-center bg-[#006838] text-white lg:p-2 shadow-lg"
+            aria-label="Main Navigation">
+            <a href="#" aria-label="Home Page"
+                class="text-lg xl:text-xl 2xl:text-2xl font-semibold hover:underline cursor-pointer">Home</a>
+            <a href="#" aria-label="About Us Page"
+                class="text-lg xl:text-xl 2xl:text-2xl font-semibold hover:underline text-yellow-500 cursor-pointer">About
+                Us</a>
+            <a href="#" aria-label="Our Services"
+                class="text-lg xl:text-xl 2xl:text-2xl font-semibold hover:underline cursor-pointer">Services</a>
+            <a href="#" aria-label="Get Involved Page"
+                class="text-lg xl:text-xl 2xl:text-2xl font-semibold hover:underline cursor-pointer">Get Involved</a>
+            <a href="#" aria-label="Upcoming Events"
+                class="text-lg xl:text-xl 2xl:text-2xl font-semibold hover:underline cursor-pointer">Events</a>
+            <a href="#" aria-label="Resource Library"
+                class="text-lg xl:text-xl 2xl:text-2xl font-semibold hover:underline cursor-pointer">Resources</a>
+        </nav>
+
+
+
+
+        <!-- Dropdown Menu (Initially Hidden) -->
+        <!-- Dropdown Menu (Styled) -->
+        <div id="dropdown-menu"
+            class="max-h-0 overflow-hidden bg-[#006838] text-white mb-4 shadow-lg transition-all duration-500 ease-in-out"
+            aria-label="Dropdown Navigation">
+
+            <!-- Navigation Links (Left Text, Right Arrow) -->
+            <div class="flex items-center justify-between px-4 py-2 border-b border-white hover:bg-black">
+                <a href="#" aria-label="Go to Home" class="text-xl font-light sm:text-2xl">Home</a>
+                <span class="text-white">&#9660;</span> <!-- Down Arrow -->
+            </div>
+
+            <div class="flex items-center justify-between px-4 py-2 border-b border-white hover:bg-black">
+                <a href="#" aria-label="Learn About Us" class="text-xl font-light text-yellow-500 sm:text-2xl">About
+                    Us</a>
+                <span class="text-yellow-500">&#9660;</span> <!-- Down Arrow (Highlighted) -->
+            </div>
+
+            <div class="flex items-center justify-between px-4 py-2 border-b border-white hover:bg-black">
+                <a href="#" aria-label="Explore Our Services" class="text-xl font-light sm:text-2xl">Services</a>
+                <span class="text-white">&#9660;</span> <!-- Down Arrow -->
+            </div>
+
+            <div class="flex items-center justify-between px-4 py-2 border-b border-white hover:bg-black">
+                <a href="#" aria-label="Get Involved with Us" class="text-xl font-light sm:text-2xl">Get Involved</a>
+                <span class="text-white">&#9660;</span> <!-- Down Arrow -->
+            </div>
+
+            <div class="flex items-center justify-between px-4 py-2 border-b border-white hover:bg-black">
+                <a href="#" aria-label="View Upcoming Events" class="text-xl font-light sm:text-2xl">Events</a>
+                <span class="text-white">&#9660;</span> <!-- Down Arrow -->
+            </div>
+
+            <div class="flex items-center justify-between px-4 py-2 border-b border-white hover:bg-black">
+                <a href="#" aria-label="Access Resources" class="text-xl font-light sm:text-2xl">Resources</a>
+                <span class="text-white">&#9660;</span> <!-- Down Arrow -->
+            </div>
+
+            <!-- Container for Search and Buttons (Tablet and Up) -->
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mt-4 mb-4 px-4">
+
+                <!-- Left: Centered Search Bar with Magnifying Glass Icon -->
+                <div class="relative w-[15rem] sm:w-[17rem]">
+                    <input type="text" id="dropdown-search" name="search" placeholder="Search..." aria-label="Search"
+                        class="w-full px-3 py-2 pr-10 rounded-full bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                    <img src="images/mag-icon.svg" alt="Search Icon"
+                        class="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 md:w-6 md:h-6">
+                </div>
+
+                <!-- Right: Prayer Times & Donate Buttons -->
+                <div class="flex gap-4">
+                    <button aria-label="View Prayer Times"
+                        class="flex items-center justify-center gap-2 px-4 py-2 
+        text-white text-[clamp(0.875rem,2.5vw,1.25rem)] font-semibold 
+        rounded-full shadow-md border-2 border-white transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                        <img src="images/prayer-icon.svg" alt="Prayer Times Icon"
+                            class="h-[clamp(1.5rem,4vw,2.5rem)] w-[clamp(1.5rem,4vw,2.5rem)]">
+                        Prayer Times
+                    </button>
+                    <button aria-label="Donate to Support"
+                        class="flex items-center justify-center gap-2 px-4 py-2 
+        text-white text-[clamp(0.875rem,2.5vw,1.25rem)] font-semibold 
+        rounded-full shadow-md border-2 border-white transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                        <img src="images/donate-icon.svg" alt="Donate Icon"
+                            class="h-[clamp(1.5rem,4vw,2.5rem)] w-[clamp(1.5rem,4vw,2.5rem)]">
+                        Donate
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ABOUT US SECTION -->
+    <section class="font-tajawal sm:mb-4 lg:mb-8 2xl:mb-12 mx-auto lg:text-left">
+        <div
+            class="w-full mx-auto flex flex-col md:flex-row md:items-center md:justify-center md:pb-10 md:gap-5 md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px] 2xl:max-w-[1300px]">
+
+
+            <!-- Image (Left on Medium+ Screens) -->
+            <div class="w-full md:w-[50%] transition-all duration-500 ease-in-out">
+                <img src="images/main-photo.jpg" alt="Exterior view of the Masjid with beautiful architecture"
+                    class="w-full h-auto max-w-[350px] sm:max-w-[400px] md:max-w-[400px] lg:max-w-[500px] xl:max-w-[600px] 2xl:max-w-[700px] shadow-lg object-cover mx-auto transition-all duration-500 ease-in-out" />
+            </div>
+
+
+            <!-- Text (Right on Medium+ Screens) -->
+            <div
+                class="w-full text-center md:text-left md:w-[50%] space-y-2 pb-10 transition-all duration-500 ease-in-out flex flex-col justify-center">
+                <!-- About Us Header -->
+                <h1
+                    class="text-[2.25rem] pt-3 font-bold sm:pt-4 md:text-[2rem] lg:text-[2.25rem] xl:text-[2.5rem] 2xl:text-[2.75rem] text-center">
+                    About Bilal Masjid
+                </h1>
+
+
+                <!-- Paragraph -->
+                <p
+                    class="block mx-auto lg:text-[1.1rem] xl:text-[1.2rem] 2xl:text-[1.3rem] leading-[1.2] px-4 max-w-[550px] leading-relaxed text-black text-left">
+                    Our masjid is a place of worship, learning, and community for Muslims in the Greater Portland
+                    area. We strive to foster unity, education, and outreach while upholding the values of Islam.
+                    We invite you to visit and experience our welcoming and diverse community.
+                    Scroll down to learn more!
+                </p>
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+
+    <!-- OUR MISSION SECTION -->
+    <section class="pb-4 md:pb-10 lg:pb-16">
+        <h1 class="text-[2.5rem] font-bold text-center mb-6 lg:text-[2.25rem] xl:text-[2.5rem] 2xl:text-[2.75rem] ">
+            Our Mission
+        </h1>
+
+        <div
+            class="grid px-4  grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-[350px] sm:max-w-[750px] lg:max-w-[1100px] xl:max-w-[1200px] 2xl:max-w-[1400px] sm:gap-6 mx-auto gap-4">
+
+            <!-- Unity -->
+            <div class="flex flex-col items-center text-center">
+                <img src="images/unity-icon.svg" alt="Unity Icon"
+                    class="w-16 h-16 mb-2 md:w-20 md:h-20 xl:w-24 xl:h-24">
+                <h3 class="text-[2rem] font-semibold sm:text-[2.25rem]">Unity</h3>
+                <p class="text-[1.2rem] leading-snug sm:text-[1.3rem] xl:text-[1.4rem]">
+                    Encouraging
+                    moderation,
+                    tolerance, and
+                    harmony
+                    within Islamic
+                    teachings.
+                </p>
+            </div>
+
+            <!-- Worship -->
+            <div class="flex flex-col items-center text-center">
+                <img src="images/worship-icon.svg" alt="Worship Icon"
+                    class="w-16 h-16 mb-2 md:w-20 md:h-20 xl:w-24 xl:h-24">
+                <h3 class="text-[2rem] font-semibold sm:text-[2.25rem]">Worship</h3>
+                <p class="text-[1.2rem] leading-snug sm:text-[1.3rem] xl:text-[1.4rem]">
+                    Congregational prayers and religious
+                    events
+                    for
+                    all
+                    ages and genders.</p>
+            </div>
+
+            <!-- Education -->
+            <div class="flex flex-col items-center text-center">
+                <img src="images/education-icon.svg" alt="Education Icon"
+                    class="w-16 h-16 mb-2 md:w-20 md:h-20 xl:w-24 xl:h-24">
+                <h3 class="text-[2rem] font-semibold sm:text-[2.25rem]">Education</h3>
+                <p class="text-[1.2rem] leading-snug sm:text-[1.3rem] xl:text-[1.4rem]">
+                    Providing
+                    Islamic educational programs
+                    for
+                    all ages
+                    and backgrounds.</p>
+            </div>
+
+            <!-- Outreach -->
+            <div class="flex flex-col items-center text-center">
+                <img src="images/outreach-icon.svg" alt="Outreach Icon"
+                    class="w-16 h-16 mb-2 md:w-20 md:h-20 xl:w-24 xl:h-24">
+                <h3 class="text-[2rem] font-semibold sm:text-[2.25rem]">Outreach</h3>
+                <p class="text-[1.2rem] leading-snug sm:text-[1.3rem] xl:text-[1.4rem]">
+                    Building
+                    connections
+                    with Muslim and
+                    non-Muslim
+                    communities.</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- OUR STORY SECTION -->
+    <section class="font-tajawal sm:mb-4 lg:mb-8 2xl:mb-12 mx-auto text-center">
+        <h1 class="block md:hidden text-[2.25rem] py-2 font-bold text-center">
+            Our Story
+        </h1>
+        <div
+            class="w-full mx-auto flex flex-col md:flex-row md:items-center md:justify-center md:gap-5 md:max-w-[800px] lg:max-w-[900px] xl:max-w-[1100px] 2xl:max-w-[1300px]">
+
+            <!-- Image (Left on Desktop) -->
+            <div
+                class="w-full h-auto max-w-[350px] sm:max-w-[400px] mx-auto lg:max-w-[500px] xl:max-w-[600px] 2xl:max-w-[700px] transition-all duration-500 ease-in-out">
+                <img id="myImage" src="images/1995-masjid.jpg" alt="Exterior view of masjid from 1995"
+                    class="w-full h-auto max-w-[350px] sm:max-w-[400px] md:max-w-[400px] lg:max-w-[500px] xl:max-w-[600px] 2xl:max-w-[700px] shadow-lg object-cover mx-auto transition-all duration-500 ease-in-out" />
+
+                <!-- Year Buttons -->
+                <!-- 2x2 Grid for Year Buttons -->
+                <div class="px-2 py-2 mt-4 grid grid-cols-2 sm:grid-cols-4 
+                        gap-2 sm:px-0 sm:py-0 lg:gap-[clamp(0.5rem,_1.5vw,_15rem)]">
+                    <button onclick="changeImage('1995', event)" aria-label="View image from 1995" class="flex-1 bg-[#006838] selected-year text-white font-semibold rounded border-2 border-black hover:bg-[#d3d3d3] transition shadow-xl
+                               py-2 text-base xl:py-3 xl:text-lg 2xl:text-2xl">
+                        1995
+                    </button>
+
+                    <button onclick="changeImage('2005', event)" aria-label="View image from 2005" class="flex-1 bg-white text-black rounded border-2 font-semibold border-black hover:bg-[#d3d3d3] transition shadow-xl
+                               py-2 text-base xl:py-3 xl:text-lg 2xl:text-2xl">
+                        2005
+                    </button>
+
+                    <button onclick="changeImage('2015', event)" aria-label="View image from 2015" class="flex-1 bg-white text-black rounded border-2 font-semibold border-black hover:bg-[#d3d3d3] transition shadow-xl
+                               py-2 text-base xl:py-3 xl:text-lg 2xl:text-2xl">
+                        2015
+                    </button>
+
+                    <button onclick="changeImage('2025', event)" aria-label="View image from 2025" class="flex-1 bg-white text-black rounded border-2 font-semibold border-black hover:bg-[#d3d3d3] transition shadow-xl
+                               py-2 text-base xl:py-3 xl:text-lg 2xl:text-2xl">
+                        2025
+                    </button>
+                </div>
+            </div>
+
+            <!-- Text (Right on Desktop) -->
+            <div class="w-full md:w-[50%] space-y-2 transition-all duration-500 ease-in-out">
+                <!-- Our Story Header -->
+                <h1
+                    class="hidden md:block pt-2 font-bold md:text-[2rem] lg:text-[2.25rem] xl:text-[2.5rem] 2xl:text-[2.75rem]">
+                    Our Story
+                </h1>
+
+                <!-- Yearly Description -->
+                <div class="sm:mt-4">
+                    <div id="year-description"
+                        class="text-left text-sm sm:text-base text-black leading-relaxed md:text-justify">
+                        <p
+                            class="block mx-auto mt-2 px-4 max-w-[550px] text-left leading-relaxed text-black text-[1rem] lg:text-[1.1rem] xl:text-[1.2rem] 2xl:text-[1.3rem] pb-10">
+                            By 1995, the Muslim community had successfully acquired a small house, which was rezoned
+                            for
+                            use
+                            as
+                            a Masjid.
+                            Though modest in size, this space became the heart of the growing Muslim population in
+                            the
+                            area.
+                            It
+                            served as
+                            a place for daily prayers, Jumu'ah congregations, and small gatherings. Fundraising
+                            efforts
+                            began in
+                            earnest
+                            to expand the Masjid and provide better facilities for worshippers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="-mx-4 bg-[#F3EFF5] text-center pt-6">
+        <!-- Newsletter -->
+        <div class="mb-12">
+            <h2 class="text-[2.5rem] font-bold text-center lg:text-[2.25rem] xl:text-[2.5rem] 2xl:text-[2.75rem]">
+                Newsletter</h2>
+            <p class="text-[1rem] text-gray text-center xl:text-[1.25rem]  xl:text-[1.5rem] ">Subscribe to our mailing
+                list</p>
+            <div class="flex justify-center mt-4">
+                <input type="email" id="newsletter-email" name="email" placeholder="Your Email" autocomplete="email"
+                    aria-label="Enter your email address"
+                    class="rounded-l-full bg-black text-white px-4 pt-2 py-1 text-sm w-[50%] max-w-[300px] focus:outline-none leading-none h-10 sm:px-6 sm:pt-1.5 sm:text-lg sm:placeholder:text-lg xl:w-[40%] xl:max-w-[400px] xl:text-xl xl:px-8 xl:pt-2 2xl:w-[30%] 2xl:max-w-[500px] 2xl:text-2xl xl:h-12 2xl:px-10 2xl:pt-2.5 2xl:h-14">
+                <button aria-label="Sign up with your email"
+                    class="rounded-r-full hover:scale-105 hover:shadow-xl bg-green-700 text-white px-4 pt-2 py-1 text-md h-10 sm:px-6 sm:pt-1.5 sm:text-lg sm:h-10 xl:px-8 xl:text-xl xl:h-12 2xl:px-10 2xl:text-2xl 2xl:h-14">
+                    Sign Up
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Main Footer Content -->
+        <div
+            class="grid grid-cols-1 gap-4 mt-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-[350px] sm:max-w-[750px] lg:max-w-[1100px] xl:max-w-[1200px] 2xl:max-w-[1400px] sm:gap-6 mx-auto gap-4">
+
+            <!-- Menu Section -->
+            <div class="mb-8 justify-items-center w-full flex flex-col xl:mb-10 2xl:mb-12">
+                <h3 class="text-3xl font-bold sm:text-3xl xl:text-4xl pb-4" aria-label="Navigation Menu">Menu</h3>
+                <ul class="space-y-3 text-center xl:space-y-4 2xl:space-y-6" aria-label="Main navigation links">
+                    <li><a href="#" aria-label="Go to Home page"
+                            class="hover:underline cursor-pointer text-lg text-black sm:text-xl xl:text-2xl">Home</a>
+                    </li>
+                    <li><a href="#" aria-label="Learn more About Us"
+                            class="hover:underline cursor-pointer text-lg text-black sm:text-xl xl:text-2xl">About
+                            Us</a></li>
+                    <li><a href="#" aria-label="Get Involved with us"
+                            class="hover:underline cursor-pointer text-lg text-black sm:text-xl xl:text-2xl">Get
+                            Involved</a></li>
+                    <li><a href="#" aria-label="Explore our Services"
+                            class="hover:underline cursor-pointer text-lg text-black sm:text-xl xl:text-2xl">Services</a>
+                    </li>
+                    <li><a href="#" aria-label="View Upcoming Events"
+                            class="hover:underline cursor-pointer text-lg text-black sm:text-xl xl:text-2xl">Events</a>
+                    </li>
+                    <li><a href="#" aria-label="Access our Resources"
+                            class="hover:underline cursor-pointer text-lg text-black sm:text-xl xl:text-2xl">Resources</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="h-full mb-8 flex flex-col items-center text-center xl:mb-10 2xl:mb-12"
+                aria-label="Contact Information">
+                <h3 class="text-3xl font-bold sm:text-3xl xl:text-4xl pb-4">Contact</h3>
+                <ul class="space-y-2 sm:space-y-4 xl:space-y-6 2xl:space-y-8" aria-label="Contact details">
+                    <li>
+                        <a href="tel:+15033232323" aria-label="Call us at (503) 323-2323"
+                            class=" hover:underline cursor-pointer text-lg text-black sm:text-xl xl:text-2xl">
+                            (503) 323-2323
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:bilalmasjid@gmail.com" aria-label="Send us an email at bilalmasjid@gmail.com"
+                            class=" hover:underline cursor-pointer text-lg text-black sm:text-xl xl:text-2xl">
+                            bilalmasjid@gmail.com
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.google.com/maps/place/4115+SW+160th+Beaverton+OR+97007" target="_blank"
+                            aria-label="Get directions to 4115 Southwest 160th, Beaverton, Oregon 97007"
+                            class=" hover:underline cursor-pointer text-lg text-black sm:text-xl xl:text-2xl">
+                            4115 SW 160th<br>Beaverton, OR 97007
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <!-- Social Media Section -->
+            <div class="mb-8 md:mb-0 flex flex-col items-center xl:mb-10 2xl:mb-12" aria-label="Social Media Links">
+                <h3 class="text-3xl font-bold sm:text-2xl xl:text-4xl pb-4">Social</h3>
+                <div
+                    class="flex flex-col justify-center items-center lg:items-center space-y-6 mt-2 xl:space-y-8 2xl:space-y-10">
+                    <a href="#" aria-label="Visit our Instagram page">
+                        <img src="images/ig-logo.svg" alt="Instagram logo"
+                            class="cursor-pointer w-10 h-10 sm:w-12 sm:h-12 xl:w-14 xl:h-14 2xl:w-16 2xl:h-16">
+                    </a>
+                    <a href="#" aria-label="Visit our Facebook page">
+                        <img src="images/fb-logo.svg" alt="Facebook logo"
+                            class="cursor-pointer w-10 h-10 sm:w-12 sm:h-12 xl:w-14 xl:h-14 2xl:w-16 2xl:h-16">
+                    </a>
+                    <a href="#" aria-label="Visit our TikTok page">
+                        <img src="images/tiktok-logo.svg" alt="TikTok logo"
+                            class="cursor-pointer w-10 h-10 sm:w-12 sm:h-12 xl:w-14 xl:h-14 2xl:w-16 2xl:h-16">
+                    </a>
+                    <a href="#" aria-label="Connect with us on WhatsApp">
+                        <img src="images/whatsapp-logo.svg" alt="WhatsApp logo"
+                            class="cursor-pointer w-10 h-10 sm:w-12 sm:h-12 xl:w-14 xl:h-14 2xl:w-16 2xl:h-16">
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- Services Section -->
+            <div class="mb-8 justify-items-center w-full flex flex-col items-center text-center xl:mb-10 2xl:mb-12"
+                aria-label="Services">
+                <h3 class="text-3xl font-bold sm:text-3xl xl:text-4xl pb-4">Services</h3>
+                <ul class="space-y-3 mt-2 text-center xl:space-y-4 2xl:space-y-6" aria-label="Available Services">
+                    <li><a href="#" aria-label="Learn more about Community Service"
+                            class="text-lg text-black sm:text-xl xl:text-2xl">Community Service</a></li>
+                    <li><a href="#" aria-label="Learn more about Sunday School"
+                            class="text-lg text-black sm:text-xl xl:text-2xl">Sunday School</a></li>
+                    <li><a href="#" aria-label="Learn more about Counseling"
+                            class="text-lg text-black sm:text-xl xl:text-2xl">Counseling</a></li>
+                    <li><a href="#" aria-label="Learn more about Funeral Services"
+                            class="text-lg text-black sm:text-xl xl:text-2xl">Funeral</a></li>
+                    <li><a href="#" aria-label="Learn more about Marriage Services"
+                            class="text-lg text-black sm:text-xl xl:text-2xl">Marriage</a></li>
+                </ul>
+            </div>
+
+
+
+        </div>
+
+        <!-- Legal Footer -->
+        <div class="bg-black text-white text-center py-8 mt-4 flex items-center justify-center">
+            <p class="px-2 text-sm sm:text-md lg:text-lg 2xl:text-lg">
+                Copyright © 2025 Bilal Masjid. All rights reserved. <br>
+                Bilal Masjid is a tax-exempt organization under U.S. Internal Revenue Code
+                section 501(c)(3).
+            </p>
+
+        </div>
+    </footer>
+
+
+
+    <!-- JavaScript to change the image on click -->
+    <script>
+
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontSize: {
+                        '10xl': '10rem',  // 160px
+                        '11xl': '12rem',  // 192px
+                        '12xl': '14rem',  // 224px
+                        '13xl': '16rem',  // 256px
+                        '14xl': '18rem',  // 288px
+                        '15xl': '20rem',  // 320px
+                        '16xl': '24rem',  // 384px
+                        '17xl': '28rem',  // 448px
+                        '18xl': '32rem',  // 512px
+                    },
+                    screens: {
+                        '3xl': '2000px',
+                        '4xl': '2500px',
+                        '5xl': '3000px',
+                        '6xl': '3500px',
+                        '7xl': '4000px',
+                    }, spacing: {
+                        'btn-icon-h': 'clamp(1.5rem,4vw,3rem)',
+                        'btn-icon-w': 'clamp(1.5rem,4vw,3rem)',
+                        'btn-text': 'clamp(0.875rem,2vw,12.5rem)',
+                        'btn-px': 'clamp(1rem,1.5vw,10rem)',
+                        'btn-py': 'clamp(0.5rem,0.5vw,3rem)',
+                        'btn-gap': 'clamp(0.5rem,1vw,2rem)',
+                        'body-txt': 'clamp(0.8rem,2vw,5rem)',
+                    }
+                },
+            },
+        };
+
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            const menu = document.getElementById('dropdown-menu');
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            // Toggle menu visibility
+            const isOpen = menu.classList.contains('max-h-[500px]');
+
+            if (isOpen) {
+                menu.classList.remove('max-h-[500px]');
+                menu.classList.add('max-h-0'); // Collapse the menu
+
+                closeIcon.classList.add('hidden');  // Hide X
+                hamburgerIcon.classList.remove('hidden');  // Show Hamburger
+
+                // Update aria-expanded attribute
+                this.setAttribute('aria-expanded', 'false');
+            } else {
+                menu.classList.remove('max-h-0');
+                menu.classList.add('max-h-[500px]'); // Expand the menu
+
+                hamburgerIcon.classList.add('hidden');  // Hide Hamburger
+                closeIcon.classList.remove('hidden');  // Show X
+
+                // Update aria-expanded attribute
+                this.setAttribute('aria-expanded', 'true');
+            }
+        });
+        function changeImage(year, event) {
+            // Mapping years to image file paths
+            const images = {
+                '1995': 'images/1995-masjid.jpg',
+                '2005': 'images/2005-masjid.jpg',
+                '2015': 'images/2015-masjid.jpg',
+                '2025': 'images/2025-photo.jpg'
+            };
+
+            // Yearly descriptions
+            const descriptions = {
+                '1995': `<p class="block mx-auto mt-2 px-4 max-w-[550px] text-left leading-relaxed text-black text-[1rem] lg:text-[1.1rem] xl:text-[1.2rem] 2xl:text-[1.3rem] pb-10">By 1995, the Muslim community had successfully acquired a small house, 
+              which was rezoned for use as a Masjid. Though modest in size, this space became the heart 
+              of the growing Muslim population in the area. It served as a place for daily prayers, Jumu'ah 
+              congregations, and small gatherings. Fundraising efforts began in earnest to expand the Masjid 
+              and provide better facilities for worshippers.</p>`,
+
+                '2005': `<p class="block mx-auto mt-2 px-4 max-w-[550px] text-left leading-relaxed text-black text-[1rem] lg:text-[1.1rem] xl:text-[1.2rem] 2xl:text-[1.3rem] pb-10">With the increasing number of attendees, the need for additional space 
+              became urgent. In 2005, the Masjid successfully acquired two adjacent lots, allowing for 
+              future expansion. A modular trailer was added to provide temporary relief, serving as extra 
+              space for community events, Sunday school classes, and overflow for Friday prayers and Taraweeh 
+              during Ramadan.</p>`,
+
+                '2015': `<p class="block mx-auto mt-2 px-4 max-w-[550px] text-left leading-relaxed text-black text-[1rem] lg:text-[1.1rem] xl:text-[1.2rem] 2xl:text-[1.3rem] pb-10">By 2015, the Masjid had completed significant structural improvements, 
+              ensuring that the growing community had adequate facilities. The expanded prayer hall 
+              provided more space for congregational prayers, while classrooms and multi-purpose rooms 
+              were introduced to support religious education and community initiatives. The Masjid also 
+              strengthened its interfaith outreach efforts, welcoming neighbors from diverse backgrounds.</p>`,
+
+                '2025': `<p class="block mx-auto mt-2 px-4 max-w-[550px] text-left leading-relaxed text-black text-[1rem] lg:text-[1.1rem] xl:text-[1.2rem] 2xl:text-[1.3rem] pb-10">Looking ahead to 2025, the Masjid continues its mission of growth and service. 
+              Plans for further expansion include upgraded facilities, enhanced community programs, and 
+              initiatives focused on youth engagement. The goal is to ensure that the Masjid remains a 
+              central hub for spiritual, educational, and social development for generations to come.</p>`
+            };
+
+            // Change the src of the image element to the one matching the year
+            document.getElementById('myImage').src = images[year];
+            // Update the description
+            document.getElementById('year-description').innerHTML = descriptions[year];
+
+            const button = document.querySelector('.selected-year');
+            button.classList.remove('bg-[#006838]', 'selected-year', 'text-white');
+            button.classList.add('bg-white', 'hover:bg-[#d3d3d3]', 'text-black'); // restore default background
+            event.currentTarget.classList.remove('hover:bg-[#d3d3d3]', 'bg-white');
+            event.currentTarget.classList.add('bg-[#006838]', 'selected-year', 'text-white');
+        }
+
+
+    </script>
+</body>
+
+</html>
